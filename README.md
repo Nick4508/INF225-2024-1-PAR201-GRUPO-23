@@ -1,29 +1,22 @@
 # INF236-2023-2-PAR201-GRUPO-05
 
-> Notar que **X** corresponde al número del grupo asignado.
+# Grupo 5
 
-# Grupo x
+Este es el repositorio del *Grupo 5*, cuyos integrantes son:
 
-Este es el repositorio del *Grupo X*, cuyos integrantes son:
-
-* Integrante 1 - Rol
-* Integrante 2 - Rol
-* Integrante 3 - Rol
-* **Tutor**: Nombre Tutor
+* Nicolás Rodríguez - Rol 202173515-1
+* Matías Barrera    - Rol 202173539-9
+* Pablo Retamales   - Rol 
+* **Tutor**: Tabata Ahumada 
 
 ## Wiki
 
-> Obtener enlace desde el home de la wiki del repo.
-
-Puede acceder a la Wiki mediante el siguiente [enlace](https://gitlab.inf.utfsm.cl/)
+Puede acceder a la Wiki mediante el siguiente [enlace](https://github.com/Tabby2109/INF236-2023-2-PAR201-GRUPO-05/wiki)
 
 ## Videos
 
-> Reemplazar con los enlaces correspondientes
-
-* [Video presentación cliente](https://www.youtube.com)
-* [Video presentación avance 1](https://www.youtube.com/)
-* Etc ...
+* [Video presentación avance 1](https://youtu.be/U0Rg02t8MhA?si=C18Q8Bhvn1SAbOZo)
+* 
 
 ## Aspectos técnicos relevantes
 
