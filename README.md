@@ -6,7 +6,7 @@ Este es el repositorio del *Grupo 5*, cuyos integrantes son:
 
 * Nicolás Rodríguez - Rol 202173515-1
 * Matías Barrera    - Rol 202173539-9
-* Pablo Retamales   - Rol 
+* Pablo Retamales   - Rol 202173650-6
 * **Tutor**: Tabata Ahumada 
 
 ## Wiki
