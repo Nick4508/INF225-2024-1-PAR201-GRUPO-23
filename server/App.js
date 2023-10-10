@@ -16,7 +16,7 @@ app.use(cors());
 db();
 
 app.listen(app.get("port"), () =>{
-    console.log('El servidor está corriendo en el puerto: ${app.get("port")}')
+    console.log(`El servidor está corriendo en el puerto: ${app.get("port")}`)
 })
 
 module.exports = app; 
