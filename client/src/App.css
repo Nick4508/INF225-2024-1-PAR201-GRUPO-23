@@ -1,3 +1,5 @@
+*{margin: 0; padding:0 }
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  background: black;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  
+}
+.navbar-logo{
+  color: white;
+  font-size: 20px;
+  margin-left: 16px;
+}
+.navbar-menu{
+  display: flex;
+  list-style-type: none;
+  gap: 30px;
+  margin: 0;
+  align-items: center;
+  margin-right:16px ;
+}
+
+.navbar-menu li a{
+  text-decoration: none;
+  color: white;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const IngresarPaciente = () => {
     return (
         <div className="container">
@@ -27,6 +27,8 @@ const IngresarPaciente = () => {
 
                 <button type="submit" className="btn btn-primary">Agregar paciente</button>
             </form>
+            <Link to="/"><button type="submit" className='btn btn-primary'>Volver</button></Link>
+
         </div>
     );
 };

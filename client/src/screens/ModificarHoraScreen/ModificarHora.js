@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ModificarHora = () => {
     return (
@@ -34,9 +35,10 @@ const ModificarHora = () => {
                     <label htmlFor="hora" className="form-label">Hora de la Cita:</label>
                     <input type="time" id="hora" className="form-control" value="13:50" readOnly />
                 </div>
-
+                
                 <button type="submit" className="btn btn-success">Modificar Hora</button>
             </form>
+            <Link to="/"><button type="submit" className='btn btn-success'>Volver</button></Link>
         </div>
     );
 };

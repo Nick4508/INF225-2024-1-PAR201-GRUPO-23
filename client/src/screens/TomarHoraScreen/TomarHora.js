@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from "react-router-dom"
 const TomarHora = () => {
     return (
         <div className="container">
@@ -53,6 +53,11 @@ const TomarHora = () => {
 
                 <button type="submit" className="btn btn-primary">Solicitar Cita</button>
             </form>
+            <div>
+
+            <Link to="/"><button type="submit" className='btn btn-primary'>Volver</button></Link>
+            </div>
+
         </div>
     );
 };

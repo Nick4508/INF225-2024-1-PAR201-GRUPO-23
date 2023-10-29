@@ -5,12 +5,33 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importar el CSS de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importar el JS de Bootstrap
+import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import TomarHora from './screens/TomarHoraScreen/TomarHora';
+import ModificarHora from './screens/ModificarHoraScreen/ModificarHora'
+import IngresarPaciente from './screens/IngresarPacienteScreen/IngresarPaciente';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>
+  },
+  {
+    path: "TomarHora",
+    element: <TomarHora/>
+  },
+  {
+    path: "ModificarHora",
+    element: <ModificarHora/>
+  },
+  {
+    path: "IngresarPaciente",
+    element: <IngresarPaciente/>
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <RouterProvider router={router} />
 );
 
 // If you want to start measuring performance in your app, pass a function
