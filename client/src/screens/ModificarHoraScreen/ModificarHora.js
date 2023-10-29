@@ -21,6 +21,11 @@ const ModificarHora = () => {
                 </div>
 
                 <div className="mb-3">
+                    <label htmlFor="correo" className="form-label">Tipo de examen: </label>
+                    <input type="email" id="correo" className="form-control" value="Ecografía" readOnly />
+                </div>
+
+                <div className="mb-3">
                     <label htmlFor="fecha" className="form-label">Fecha de la Cita:</label>
                     <input type="date" id="fecha" className="form-control" value="2023-10-28" readOnly />
                 </div>
