@@ -6,7 +6,7 @@ import TomarHora  from './screens/TomarHoraScreen';
 function App() {
 	return (
 		
-		<ModificarHora/>
+		<TomarHora/>
 		
 	);
 }

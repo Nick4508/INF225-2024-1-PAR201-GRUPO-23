@@ -14,7 +14,38 @@ const TomarHora = () => {
                     <label htmlFor="fecha" className="form-label">Fecha de la Cita:</label>
                     <input type="date" id="fecha" name="fecha" className="form-control" required />
                 </div>
-
+                <label className="form-label">Tipo de Examen:</label>
+                <div className='mb-3 d-flex'>
+                    
+                    <div className='me-3'>
+                        <label>
+                            Scanner 
+                            <input className="ms-1" type="radio" name="type"
+                                id="scanner" value="other" />
+                        </label>
+                    </div>
+                    <div className='me-3'>
+                        <label>
+                            Resonancia Magnética 
+                            <input className="ms-1" type="radio" name="type"
+                                id="resonancia" value="other" />
+                        </label>
+                    </div>
+                    <div className='me-3'>
+                        <label>
+                            Ecografía 
+                            <input className="ms-1" type="radio" name="type"
+                                id="ecografia" value="other" />
+                        </label>
+                    </div>
+                    <div className='me-3'>
+                        <label>
+                            Radiografía 
+                            <input className="ms-1" type="radio" name="type"
+                                id="radiografia" value="other" />
+                        </label>
+                    </div>
+                </div>
                 <div className="mb-3">
                     <label htmlFor="hora" className="form-label">Hora de la Cita:</label>
                     <input type="time" id="hora" name="hora" className="form-control" required />
