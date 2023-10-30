@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 const TomarHora = () => {
     const [citaInfo, setCitaInfo] = useState({
         rut: '',
@@ -20,13 +22,13 @@ const TomarHora = () => {
             alert("Por favor complete el RUT y el Tipo de Examen.");
         } else {
             const script = `
-                <script>
-                rut = '${citaInfo.rut}';
-                tipoExamen = '${citaInfo.tipoExamen}';
-                fecha = '${citaInfo.fecha}';
-                hora = '${citaInfo.hora}';
-                </script>`;
-            alert('Script de JavaScript:\n' + script);
+                Rut: '${citaInfo.rut}'
+                Tipo Examen: '${citaInfo.tipoExamen}'
+                Fecha: '${citaInfo.fecha}'
+                Hora: '${citaInfo.hora}'
+                `;
+            alert('Su hora fue ingresada al sistema\n' + script);
+            
         }
     };
 
@@ -40,7 +42,7 @@ const TomarHora = () => {
                         type="text"
                         id="rut"
                         name="rut"
-                        pattern="[0-9]{7,8}" 
+                        pattern="[0-9]{7,9}" 
                         title="Ingrese un RUT válido"
                         className="form-control"
                         required
@@ -126,9 +128,11 @@ const TomarHora = () => {
                         onChange={handleInputChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">
-                    Solicitar Cita
-                </button>
+                <Link to={`/Conexion?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}`}>
+                    <button className="btn btn-primary">
+                        Solicitar Cita
+                    </button>
+                </Link>
             </form>
             <br />
             <Link to="/">

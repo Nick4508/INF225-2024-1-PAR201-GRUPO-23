@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importar el CSS de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importar el JS de Bootstrap
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import TomarHora from './screens/TomarHoraScreen/TomarHora';
+import Conexion from './components/Conexion';
 import ModificarHora from './screens/ModificarHoraScreen/ModificarHora'
 import IngresarPaciente from './screens/IngresarPacienteScreen/IngresarPaciente';
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "IngresarPaciente",
     element: <IngresarPaciente/>
+  },
+  {
+    path: "Conexion",
+    element: <Conexion/> 
   }
 ])
 
