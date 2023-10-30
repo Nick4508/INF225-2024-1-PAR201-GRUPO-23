@@ -53,10 +53,9 @@ const TomarHora = () => {
 
                 <button type="submit" className="btn btn-primary">Solicitar Cita</button>
             </form>
-            <div>
+            <br></br>
 
             <Link to="/"><button type="submit" className='btn btn-primary'>Volver</button></Link>
-            </div>
 
         </div>
     );

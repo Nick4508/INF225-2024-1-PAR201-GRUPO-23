@@ -27,6 +27,8 @@ const IngresarPaciente = () => {
 
                 <button type="submit" className="btn btn-primary">Agregar paciente</button>
             </form>
+            <br></br>
+            
             <Link to="/"><button type="submit" className='btn btn-primary'>Volver</button></Link>
 
         </div>

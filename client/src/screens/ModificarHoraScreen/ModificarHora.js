@@ -38,6 +38,8 @@ const ModificarHora = () => {
                 
                 <button type="submit" className="btn btn-success">Modificar Hora</button>
             </form>
+
+            <br></br>
             <Link to="/"><button type="submit" className='btn btn-success'>Volver</button></Link>
         </div>
     );
