@@ -31,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "Conexion",
     element: <Conexion/> 
+  },
+  {
+    path: "Horario",
+    element: <></> 
   }
 ])
 

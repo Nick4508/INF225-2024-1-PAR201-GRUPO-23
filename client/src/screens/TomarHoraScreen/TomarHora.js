@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const TomarHora = () => {
     const [citaInfo, setCitaInfo] = useState({
+        nombre: '',
         rut: '',
         tipoExamen: '',
         fecha: '',
@@ -36,14 +37,37 @@ const TomarHora = () => {
         <div className="container">
             <h2>Solicitud de Cita Médica</h2>
             <form onSubmit={handleSolicitarCita}>
+            <div className="mb-3">
+                    <label htmlFor="nombre" className="form-label">Nombre:</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        title="Ingrese Nombre"
+                        className="form-control"
+                        required
+                        onChange={handleInputChange}
+                    />
+                </div>
                 <div className="mb-3">
                     <label htmlFor="rut" className="form-label">RUT (sin puntos ni guión):</label>
                     <input
                         type="text"
                         id="rut"
                         name="rut"
-                        pattern="[0-9]{7,9}" 
+                        pattern="[0-9]{7,10}" 
                         title="Ingrese un RUT válido"
+                        className="form-control"
+                        required
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="mail" className="form-label">Email:</label>
+                    <input
+                        type="text"
+                        id="mail"
+                        name="mail"
                         className="form-control"
                         required
                         onChange={handleInputChange}
@@ -59,7 +83,7 @@ const TomarHora = () => {
                                     className="ms-1"
                                     type="radio"
                                     name="tipoExamen"
-                                    value="Scanner"
+                                    value="scanners"
                                     onChange={handleInputChange}
                                 />
                             </label>
@@ -71,7 +95,7 @@ const TomarHora = () => {
                                     className="ms-1"
                                     type="radio"
                                     name="tipoExamen"
-                                    value="Resonancia Magnética"
+                                    value="resonancias"
                                     onChange={handleInputChange}
                                 />
                             </label>
@@ -83,7 +107,7 @@ const TomarHora = () => {
                                     className="ms-1"
                                     type="radio"
                                     name="tipoExamen"
-                                    value="Ecografía"
+                                    value="ecografias"
                                     onChange={handleInputChange}
                                 />
                             </label>
@@ -95,7 +119,7 @@ const TomarHora = () => {
                                     className="ms-1"
                                     type="radio"
                                     name="tipoExamen"
-                                    value="Radiografía"
+                                    value="radiografias"
                                     onChange={handleInputChange}
                                 />
                             </label>
@@ -128,7 +152,7 @@ const TomarHora = () => {
                         onChange={handleInputChange}
                     />
                 </div>
-                <Link to={`/Conexion?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}`}>
+                <Link to={`/Conexion?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}&nombre=${citaInfo.nombre}&mail=${citaInfo.mail}`}>
                     <button className="btn btn-primary">
                         Solicitar Cita
                     </button>
