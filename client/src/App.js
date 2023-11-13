@@ -8,6 +8,9 @@ import PrincipalEcografias from './components/principalEcografias';
 import PrincipalResonancias from './components/principalResonancias';
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css";
+import es from "date-fns/locale/es";
+import { registerLocale } from 'react-datepicker';
+registerLocale("es", es);
 
 function App() {
 	const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
@@ -16,30 +19,32 @@ function App() {
 		setFechaSeleccionada(date);
 	};
 	return (
+	
 	<div>
-	<Navbar />
-	<h5>Selecciona la fecha de los examenes</h5>
-	<DatePicker selected={fechaSeleccionada} onChange={handleFechaChange} />
-	<div className='principal'>
-		<ul style={{ listStyle: 'none', padding: 0 }}>
-			<li>
-			<PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} />
-			</li>
-		<br/>
-			<li>
-			<PrincipalScanners fechaSeleccionada={fechaSeleccionada} />
-			</li>
-		<br/>
-			<li>
-			<PrincipalEcografias fechaSeleccionada={fechaSeleccionada}/>
-			</li><br/>
-			<li>
-			<PrincipalResonancias fechaSeleccionada={fechaSeleccionada}/>
-			</li>
-		</ul>
-		<br/>
-
-	</div>
+		<Navbar />
+		<div class="row mt-4">
+			<div class="col-4 d-flex flex-column align-items-center">
+				<h5>Selecciona la fecha de los examenes</h5>
+				<DatePicker selected={fechaSeleccionada} onChange={handleFechaChange} locale="es" dateFormat="dd-MM-yyyy" />
+			</div>
+			<div className='principal' class="col-8">
+				<ul style={{ listStyle: 'none', padding: 0 }}>
+					<li>
+						<PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} />
+					</li><br/>
+					<li>
+						<PrincipalScanners fechaSeleccionada={fechaSeleccionada} />
+					</li><br/>
+					<li>
+						<PrincipalEcografias fechaSeleccionada={fechaSeleccionada}/>
+					</li><br/>
+					<li>
+						<PrincipalResonancias fechaSeleccionada={fechaSeleccionada}/>
+					</li>
+				</ul>
+				<br/>
+			</div>
+		</div>
 	</div>
 
 ); 
