@@ -76,3 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Para el diseño de la página:
 ## npm install bootstrap 
+## npm install react-router-dom
+## npm install react-bootstrap
+## npm install react-datepicker
