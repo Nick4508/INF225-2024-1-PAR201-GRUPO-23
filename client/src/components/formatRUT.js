@@ -1,4 +1,3 @@
-import React from "react";
 export default function formatRUT(rut) {
     let rutStr = rut.toString();
     const digito_verificador = rutStr[rutStr.length - 1];
