@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, ListGroup } from 'react-bootstrap';
+import formatRUT from './formatRUT';
 
 function PrincipalRadiografias({ fechaSeleccionada }) {
   const [radiografias, setRadiografias] = useState([]);
@@ -40,7 +41,7 @@ function PrincipalRadiografias({ fechaSeleccionada }) {
               <Card.Title>{radiografia.nombre}</Card.Title>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <strong>Rut:</strong> {radiografia.rut}
+                  <strong>RUT:</strong> {formatRUT(radiografia.rut)}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <strong>Fecha:</strong>{' '}

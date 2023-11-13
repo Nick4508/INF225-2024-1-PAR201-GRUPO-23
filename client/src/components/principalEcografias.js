@@ -42,7 +42,7 @@ function PrincipalEcografias({ fechaSeleccionada }) {
               <Card.Title>{radiografia.nombre}</Card.Title>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <strong>Rut:</strong> {formatRUT(radiografia.rut)}
+                  <strong>RUT:</strong> {formatRUT(radiografia.rut)}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <strong>Fecha:</strong>{' '}
