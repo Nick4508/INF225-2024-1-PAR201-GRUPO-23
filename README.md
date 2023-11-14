@@ -24,12 +24,16 @@ Puede acceder a la Wiki mediante el siguiente [enlace](https://github.com/Tabby2
 _Todo aspecto relevante cuando para poder usar el proyecto o consideraciones del proyecto base a ser entregado_
 
 npm install bootstrap 
-npm install bootstrap 
+
 npm install react-router-dom
+
 npm install react-bootstrap
+
 npm install react-datepicker
 
 Para iniciar el cliente,
+
   npm start (dentro de la carpeta /client)
 Para iniciar el servidor MongoDB,
+
   npm run dev (dentro de la carpeta /server)
