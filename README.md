@@ -31,9 +31,9 @@ npm install react-bootstrap
 
 npm install react-datepicker
 
-Para iniciar el cliente,
+## Para iniciar el cliente,
 
   npm start (dentro de la carpeta /client)
-Para iniciar el servidor MongoDB,
+## Para iniciar el servidor MongoDB,
 
   npm run dev (dentro de la carpeta /server)
