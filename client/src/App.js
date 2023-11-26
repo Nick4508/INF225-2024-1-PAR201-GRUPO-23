@@ -19,22 +19,26 @@ function App() {
 		setOpcionSeleccionada(opcion);
 	  };
 	const handleFechaChange = (date) => {
-		const fechaActual = fechaSeleccionada || new Date();
-
-		// Establecer la hora deseada en la fecha actual
-		fechaActual.setHours(12); // Establecer la hora deseada
-		fechaActual.setMinutes(0); // Establecer los minutos deseados
-
-		// Mantener la fecha seleccionada y ajustar solo la hora
-		const fechaAjustada = new Date(
-			date.getFullYear(),
-			date.getMonth(),
-			date.getDate(),
-			fechaActual.getHours(),
-			fechaActual.getMinutes()
-		);
-
-		setFechaSeleccionada(fechaAjustada);
+	// Obtener la fecha actual de fechaSeleccionada
+	const fechaActual = fechaSeleccionada || new Date();
+	
+	// Establecer la hora actual en la fecha actual
+	const nuevaHora = new Date().getHours() - 3;
+	const nuevoMinuto = new Date().getMinutes();
+	// Establecer la nueva hora en la fecha actual
+	fechaActual.setHours(nuevaHora);
+	fechaActual.setMinutes(nuevoMinuto); // Establecer los minutos deseados
+	
+	// Mantener la fecha seleccionada y ajustar solo la hora
+	const fechaAjustada = new Date(
+		date.getFullYear(),
+		date.getMonth(),
+		date.getDate(),
+		fechaActual.getHours(),
+		fechaActual.getMinutes()
+	);
+	
+	setFechaSeleccionada(fechaAjustada);
 	};
 
 	const renderPrincipalComponent = () => {
