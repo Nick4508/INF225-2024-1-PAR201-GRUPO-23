@@ -38,6 +38,18 @@ router.get('/fecha/:fecha', async (req, res) => {
       res.status(500).send('Error interno del servidor');
     }
   });
+  router.get('/fecha/:fecha/hora/:hora', async (req, res) => {
+    try {
+      const fechaBuscada = new Date(req.params.fecha);
+      const horaBuscada = new Date(`${req.params.fecha}T${req.params.hora}`)
+      const radiografiasPorFecha = await Radiografia.find({ fecha: fechaBuscada ,hora : horaBuscada.toISOString()});
+      
+      res.json(radiografiasPorFecha);
+    } catch (error) {
+      console.error('Error al obtener Scanner por fecha:', error);
+      res.status(500).send('Error interno del servidor');
+    }
+  });
   
 //operaciones por Rut:
 //delete

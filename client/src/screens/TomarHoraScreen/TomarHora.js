@@ -209,7 +209,7 @@ const TomarHora = () => {
                         ))}
                     </select>
                 </div>
-                <Link to={`/Conexion?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}&nombre=${citaInfo.nombre}&mail=${citaInfo.mail}`}>
+                <Link to={`/Conexion?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}&nombre=${citaInfo.nombre}&mail=${citaInfo.mail}&random=${citaInfo.hora}`}>
                     <button className="btn btn-primary">
                         Solicitar Cita
                     </button>

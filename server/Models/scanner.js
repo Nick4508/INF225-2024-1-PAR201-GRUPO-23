@@ -7,5 +7,7 @@ const scanner_schema = new Schema({
     fecha : Date,
     nombre : String,
     hora : Date,
+    random : String,
+
 })
 module.exports = model('Scanner',scanner_schema)

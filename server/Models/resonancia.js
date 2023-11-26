@@ -7,5 +7,8 @@ const resonanciaSchema = new Schema({
     fecha : Date,
     nombre : String,
     hora : Date,
+    random : String,
+
+
 })
 module.exports = model('Resonancia',resonanciaSchema)

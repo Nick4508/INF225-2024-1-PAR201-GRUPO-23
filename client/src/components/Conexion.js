@@ -10,12 +10,14 @@ const Conexion = () => {
   const hora = queryParams.get('hora');
   const nombre =queryParams.get('nombre')
   const mail = queryParams.get('mail')
+  const random = queryParams.get('random')
 
   const [nuevosDatos] = useState({
     nombre : nombre,
     rut: rut,
     tipoExamen: tipoExamen,
     email : mail,
+    random : random,
     fecha:   new Date( `${fecha}T03:00:00.000+00:00`),
     hora:  new Date(`${fecha}T${hora}`),
 
