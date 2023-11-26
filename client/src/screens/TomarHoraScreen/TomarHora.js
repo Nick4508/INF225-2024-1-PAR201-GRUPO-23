@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 const TomarHora = () => {
     const [citaInfo, setCitaInfo] = useState({
         nombre: '',
@@ -14,6 +12,7 @@ const TomarHora = () => {
     });
 
     const [horasDisponibles, setHorasDisponibles] = useState([]);
+    const [cantidadExamenes, setCantidadExamenes] = useState([]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -38,54 +37,61 @@ const TomarHora = () => {
     };
     const obtenerHorasPorTipo = (tipoExamen) =>{
         const horasPorTipo = {
-            scanners: ["08:30", "09:30", "10:30", "11:30", "14:00", "15:00"], // Cada 1 hora
-            resonancias: ["08:30", "10:00", "11:30", "14:00"], // 1 hora y media
-            ecografias: ["08:30", "09:00","09:30","10:00" ,"10:30","11:00", "11:30","12:00", "14:00", "14:30", "15:00", "15:30"], // cada 30
-            radiografias: ["08:30", "09:00","09:30","10:00" ,"10:30","11:00", "11:30","12:00", "14:00", "14:30", "15:00", "15:30"]
+            scanners: { horas: ["08:30", "09:30", "10:30", "11:30", "14:00", "15:00"], maquinas: 3}, // Cada 1 hora
+            resonancias: {horas: ["08:30", "10:00", "11:30", "14:00"], maquinas: 2}, // 1 hora y media
+            ecografias: {horas: ["08:30", "09:00","09:30","10:00" ,"10:30","11:00", "11:30","12:00", "14:00", "14:30", "15:00", "15:30"], maquinas: 5}, // cada 30
+            radiografias: {horas: ["08:30", "09:00","09:30","10:00" ,"10:30","11:00", "11:30","12:00", "14:00", "14:30", "15:00", "15:30"], maquinas: 7}
         };
-        return horasPorTipo[tipoExamen] || [];
+        return horasPorTipo[tipoExamen];
     };
-    
-    useEffect(() => {
-        const horasParaExamen = obtenerHorasPorTipo(citaInfo.tipoExamen);
-        setHorasDisponibles(horasParaExamen);
-    }, [citaInfo.tipoExamen]);
-
     // Maquinas
     // 7 radiografias
     // 3 scanner
     //  5 ecografias
     //  2 resonancias
-    // const [cantidadMaquinas, setCantidadMaquinas] = useState([]);
-	// const [cupos, setCupos] = useState([]);
-    // const [loading, setLoading] = useState(true);
-	// useEffect(() => {
-	// 	const fetch = async () => {
-    //         try {
-    //             const formattedDate = citaInfo.fecha.toISOString().split('T')[0];
-    //             const response = await fetch(`http://localhost:5000/${citaInfo.tipoExamen}/fecha/:${formattedDate}`);
-    //             const data = await response.json();
-    //             console.log("alo");
-    //             console.log('Datos recibidos:', data);
-    //             // if (citaInfo.tipoExamen === "scanners"){
-    //             //     setCantidadMaquinas(3);
-    //             // } else if (citaInfo.tipoExamen === "radiografias"){
-    //             //     setCantidadMaquinas(7);
-    //             // } else if (citaInfo.tipoExamen === "ecografias"){
-    //             //     setCantidadMaquinas(5);
-    //             // } else if (citaInfo.tipoExamen === "resonancias"){
-    //             //     setCantidadMaquinas(2);
-    //             // }
-    //             // setCupos(cantidadMaquinas-cantidadQuerys)
-    //             // setLoading(false);
-    //         } catch (error) {
-    //             console.error('Error al obtener la colección de radiografías:', error);
-    //             // setLoading(false);
-    //         }
-	// 	};
-
-	// 	fetch();
-	// }, );
+    useEffect(() => {
+        const obtenerDatos = async () => {
+            try {
+                // Obtén horas para cada tipo de examen
+                const horasParaExamen = obtenerHorasPorTipo(citaInfo.tipoExamen);
+    
+    
+                // Inicializa un arreglo para almacenar los resultados
+                const resultados = [];
+    
+                //Realiza una solicitud para cada hora del tipo de examen
+                for (const hora of horasParaExamen.horas) {
+                    const response = await fetch(`http://localhost:5000/${citaInfo.tipoExamen}/fecha/:${citaInfo.fecha}/random/${hora}`);
+                    const data = await response.json();
+                    const total = data.radiografiasPorFecha.length
+                    
+                    // Agrega los resultados al arreglo
+                    const cantidad = horasParaExamen.maquinas - total;
+                   
+                    if (cantidad !== 0){
+                        resultados.push(hora);
+                    }
+                       //eco 1 rad 5 res 1 sc 2
+                }
+    
+                // Imprime los resultados
+                console.log('Resultados para cada hora:', resultados);
+    
+                // Actualiza el estado con las horas disponibles
+                setHorasDisponibles(resultados);
+            } catch (error) {
+                console.error('Error al obtener la cantidad', error);
+                const response = await fetch(`http://localhost:5000/${citaInfo.tipoExamen}/fecha/:${citaInfo.fecha}/random/alo`);
+                const data = await response.json();
+              
+                
+            }
+        };
+    
+        obtenerDatos();
+    }, [citaInfo.fecha, citaInfo.tipoExamen]);
+    
+      
     return (
         <div className="container">
             <h2>Solicitud de Cita Médica</h2>
