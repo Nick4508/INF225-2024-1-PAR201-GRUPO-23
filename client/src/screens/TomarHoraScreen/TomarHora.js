@@ -9,7 +9,8 @@ const TomarHora = () => {
         rut: '',
         tipoExamen: '',
         fecha: '',
-        hora: ''
+        hora: '',
+        random: ''
     });
 
     const [horasDisponibles, setHorasDisponibles] = useState([]);
@@ -29,6 +30,7 @@ const TomarHora = () => {
                 Tipo Examen: '${citaInfo.tipoExamen}'
                 Fecha: '${citaInfo.fecha}'
                 Hora: '${citaInfo.hora}'
+                
                 `;
             alert('Su hora fue ingresada al sistema\n' + script);
             
