@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import DatePicker from "react-datepicker";
 
 import Navbar from './components/Navbar';
@@ -18,9 +18,20 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(false); 
 	const [username, setUsername] = useState('');
 	
+	useEffect(() => {
+		const loggedInState = localStorage.getItem('loggedIn');
+		const savedUsername = localStorage.getItem('username');
+	
+		if (loggedInState === 'true' && savedUsername) {
+		  setLoggedIn(true);
+		  setUsername(savedUsername);
+		}
+	  }, []);
 	const handleLogin = (username) => {
-		setLoggedIn(true); // Actualiza el estado para indicar que el usuario ha iniciado sesión
-		setUsername(username)
+		setLoggedIn(true); // Indicar que el usuario ha iniciado sesión
+		setUsername(username);
+		localStorage.setItem('loggedIn', 'true'); // Guardar el estado de inicio de sesión
+		localStorage.setItem('username', username); // Guardar el nombre de usuario
 	  };
 
 	const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
