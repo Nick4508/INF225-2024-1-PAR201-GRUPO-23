@@ -67,9 +67,6 @@
 
 .principal{
   font-family: 'Courier New', Courier, monospace;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
   margin-bottom: 100px;
 }
 .principal li a{

@@ -19,21 +19,46 @@ function App() {
 		setOpcionSeleccionada(opcion);
 	  };
 	const handleFechaChange = (date) => {
-		setFechaSeleccionada(date);
+		const fechaActual = fechaSeleccionada || new Date();
+
+		// Establecer la hora deseada en la fecha actual
+		fechaActual.setHours(12); // Establecer la hora deseada
+		fechaActual.setMinutes(0); // Establecer los minutos deseados
+
+		// Mantener la fecha seleccionada y ajustar solo la hora
+		const fechaAjustada = new Date(
+			date.getFullYear(),
+			date.getMonth(),
+			date.getDate(),
+			fechaActual.getHours(),
+			fechaActual.getMinutes()
+		);
+
+		setFechaSeleccionada(fechaAjustada);
 	};
 
 	const renderPrincipalComponent = () => {
 		switch (opcionSeleccionada) {
-		  case 'radiografias':
-			return <PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} />;
-		  case 'scanners':
-			return <PrincipalScanners fechaSeleccionada={fechaSeleccionada} />;
-		  case 'ecografias':
-			return <PrincipalEcografias fechaSeleccionada={fechaSeleccionada} />;
-		  case 'resonancias':
-			return <PrincipalResonancias fechaSeleccionada={fechaSeleccionada} />;
+			
+			case 'radiografias':
+				return <div><PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} /></div>
+			case 'scanners':
+				return <div><PrincipalScanners fechaSeleccionada={fechaSeleccionada} /></div>;
+			case 'ecografias':
+				return  <div><PrincipalEcografias fechaSeleccionada={fechaSeleccionada} /></div>;
+			case 'resonancias':
+				return  <div><PrincipalResonancias fechaSeleccionada={fechaSeleccionada} /></div>;
+			case 'todos':
+				return (
+					<div>
+						<PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} />
+						<PrincipalScanners fechaSeleccionada={fechaSeleccionada} />
+						<PrincipalEcografias fechaSeleccionada={fechaSeleccionada} />
+						<PrincipalResonancias fechaSeleccionada={fechaSeleccionada} />
+					</div>
+				);
 		  default:
-			return null;
+			return null
 		}
 	}
 	return (
@@ -41,36 +66,37 @@ function App() {
 		
 	<div>
 		<Navbar />
-		<div className="row mt-4 mr-3">
-        <div className="col-md-6">
-          <div className="d-flex flex-column align-items-center">
-            <h5>Selecciona la fecha de los exámenes</h5>
-            <DatePicker
-              selected={fechaSeleccionada}
-              onChange={handleFechaChange}
-              locale="es"
-              dateFormat="dd-MM-yyyy"
-            />
-          </div>
-        </div>
-        <div className="col-md-6 mr-3">
-          <div className="d-flex flex-column align-items-center">
-            <h5>Selecciona el examen</h5>
-            <select
-              className="form-select"
-              onChange={(e) => handleOpcionChange(e.target.value)}
-              value={opcionSeleccionada}
-            >
-              <option value="radiografias">Radiografías</option>
-              <option value="scanners">Scanners</option>
-              <option value="ecografias">Ecografías</option>
-              <option value="resonancias">Resonancias</option>
-            </select>
-          </div>
-        </div>
-      </div>
-		<div className='principal' class="row mt-4">
-			<div class="row-4 d-flex flex-column align-items-center">{renderPrincipalComponent()}</div>
+		<div className="container">
+			<div className="row mt-4 d-flex justify-content-center align-items-center">
+				<div className="col-6">
+					<h5>Selecciona la fecha de los exámenes</h5>
+					<DatePicker
+						selected={fechaSeleccionada}
+						onChange={handleFechaChange}
+						locale="es"
+						dateFormat="dd-MM-yyyy"
+						
+        				timeFormat="HH:mm"
+					/>
+				</div>
+				<div className="col-6">
+					<h5>Selecciona el examen</h5>
+					<select
+						className="form-select"
+						onChange={(e) => handleOpcionChange(e.target.value)}
+						value={opcionSeleccionada}
+					>
+					<option value="radiografias">Radiografías</option>
+					<option value="scanners">Scanners</option>
+					<option value="ecografias">Ecografías</option>
+					<option value="resonancias">Resonancias</option>
+					<option value="todos">Todos los exámenes</option>
+					</select>
+				</div>
+			</div>
+			<div class="row mt-4 d-flex flex-column justify-content-center align-items-center">
+				{renderPrincipalComponent()}
+			</div>
 		</div>
 	</div>
 

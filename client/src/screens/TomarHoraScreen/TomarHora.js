@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -12,11 +12,13 @@ const TomarHora = () => {
         hora: ''
     });
 
+    const [horasDisponibles, setHorasDisponibles] = useState([]);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setCitaInfo({ ...citaInfo, [name]: value });
     };
-
+  
     const handleSolicitarCita = (e) => {
         e.preventDefault();
         if (!citaInfo.rut || !citaInfo.tipoExamen) {
@@ -32,7 +34,56 @@ const TomarHora = () => {
             
         }
     };
+    const obtenerHorasPorTipo = (tipoExamen) =>{
+        const horasPorTipo = {
+            scanners: ["08:30", "9:30", "10:30", "11:30", "14:00", "15:00"], // Cada 1 hora
+            resonancias: ["08:30", "10:00", "11:30", "14:00"], // 1 hora y media
+            ecografias: ["8:30", "9:00","9:30","10:00" ,"10:30","11:00", "11:30","12:00", "14:00", "14:30", "15:00", "15:30"], // cada 30
+            radiografias: ["8:30", "9:00","9:30","10:00" ,"10:30","11:00", "11:30","12:00", "14:00", "14:30", "15:00", "15:30"]
+        };
+        return horasPorTipo[tipoExamen] || [];
+    };
+    
+    useEffect(() => {
+        const horasParaExamen = obtenerHorasPorTipo(citaInfo.tipoExamen);
+        setHorasDisponibles(horasParaExamen);
+    }, [citaInfo.tipoExamen]);
 
+    // Maquinas
+    // 7 radiografias
+    // 3 scanner
+    //  5 ecografias
+    //  2 resonancias
+    // const [cantidadMaquinas, setCantidadMaquinas] = useState([]);
+	// const [cupos, setCupos] = useState([]);
+    // const [loading, setLoading] = useState(true);
+	// useEffect(() => {
+	// 	const fetch = async () => {
+    //         try {
+    //             const formattedDate = citaInfo.fecha.toISOString().split('T')[0];
+    //             const response = await fetch(`http://localhost:5000/${citaInfo.tipoExamen}/fecha/:${formattedDate}`);
+    //             const data = await response.json();
+    //             console.log("alo");
+    //             console.log('Datos recibidos:', data);
+    //             // if (citaInfo.tipoExamen === "scanners"){
+    //             //     setCantidadMaquinas(3);
+    //             // } else if (citaInfo.tipoExamen === "radiografias"){
+    //             //     setCantidadMaquinas(7);
+    //             // } else if (citaInfo.tipoExamen === "ecografias"){
+    //             //     setCantidadMaquinas(5);
+    //             // } else if (citaInfo.tipoExamen === "resonancias"){
+    //             //     setCantidadMaquinas(2);
+    //             // }
+    //             // setCupos(cantidadMaquinas-cantidadQuerys)
+    //             // setLoading(false);
+    //         } catch (error) {
+    //             console.error('Error al obtener la colección de radiografías:', error);
+    //             // setLoading(false);
+    //         }
+	// 	};
+
+	// 	fetch();
+	// }, );
     return (
         <div className="container">
             <h2>Solicitud de Cita Médica</h2>
@@ -143,14 +194,20 @@ const TomarHora = () => {
                     <label htmlFor="hora" className="form-label">
                         Hora de la Cita:
                     </label>
-                    <input
-                        type="time"
+                    <select
                         id="hora"
                         name="hora"
                         className="form-control"
                         required
                         onChange={handleInputChange}
-                    />
+                    >
+                        <option value="">Selecciona una hora</option>
+                        {horasDisponibles.map((hora, index) => (
+                            <option key={index} value={hora}>
+                                {hora}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <Link to={`/Conexion?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}&nombre=${citaInfo.nombre}&mail=${citaInfo.mail}`}>
                     <button className="btn btn-primary">
