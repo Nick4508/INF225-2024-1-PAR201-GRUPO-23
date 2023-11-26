@@ -10,17 +10,17 @@ const Conexion = () => {
   const hora = queryParams.get('hora');
   const nombre =queryParams.get('nombre')
   const mail = queryParams.get('mail')
-  const random = queryParams.get('random')
+  // const random = queryParams.get('random')
 
   const [nuevosDatos] = useState({
     nombre : nombre,
     rut: rut,
     tipoExamen: tipoExamen,
     email : mail,
-    random : random,
+    random : `${hora.split(':')[0]}${hora.split(':')[1]}`,
     fecha:   new Date( `${fecha}T03:00:00.000+00:00`),
     hora:  new Date(`${fecha}T${hora}`),
-
+    algo : 10,  
     // Otros campos que desees agregar
   });
 
@@ -36,6 +36,7 @@ const Conexion = () => {
         },
         body: JSON.stringify({
             ...nuevosDatos,
+            random : nuevosDatos.random,
             fecha: nuevosDatos.fecha.toISOString(),
             hora: nuevosDatos.hora.toISOString(),
           }),
@@ -62,7 +63,7 @@ const Conexion = () => {
       <Link to="/">
 
       <button type="button" className="btn btn-primary" onClick={handleAgregarRadiografia}>
-        Agregar Radiografía
+        Agregar examen
       </button>
       </Link>
         <br/>
