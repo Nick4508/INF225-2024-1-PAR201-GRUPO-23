@@ -17,7 +17,7 @@ const Conexion = () => {
     rut: rut,
     tipoExamen: tipoExamen,
     email : mail,
-    random : `${hora.split(':')[0]}${hora.split(':')[1]}`,
+    random : `${hora.split(':')[0]}`+`:`+`${hora.split(':')[1]}`,
     fecha:   new Date( `${fecha}T03:00:00.000+00:00`),
     hora:  new Date(`${fecha}T${hora}`),
     algo : 10,  
