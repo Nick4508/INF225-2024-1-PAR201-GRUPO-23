@@ -10,8 +10,6 @@ function Navbar(){
             <ul className="navbar-menu">
                 <li><Link to="TomarHora">TomarHora</Link> </li>
                 <li><Link to="ModificarHora">ModificarHora</Link></li>
-                <li><Link to="IngresarPaciente">IngresarPaciente</Link></li>
-
             </ul>
 
         </div>

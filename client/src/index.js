@@ -9,7 +9,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import TomarHora from './screens/TomarHoraScreen/TomarHora';
 import Conexion from './components/Conexion';
 import ModificarHora from './screens/ModificarHoraScreen/ModificarHora'
-import IngresarPaciente from './screens/IngresarPacienteScreen/IngresarPaciente';
 
 const router = createBrowserRouter([
   {
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
   {
     path: "ModificarHora",
     element: <ModificarHora/>
-  },
-  {
-    path: "IngresarPaciente",
-    element: <IngresarPaciente/>
   },
   {
     path: "Conexion",
