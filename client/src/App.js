@@ -134,7 +134,6 @@ function App() {
 		</div>
 	):(
 		<div>
-          <h1>Iniciar Sesión</h1>
           <LoginForm onLogin={handleLogin} />
 		</div>
 	)
