@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar({ username }) {
+function Navbar({ username, onLogout }) {
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const handleLogout = () => {
-    localStorage.removeItem('loggedIn');
-    localStorage.removeItem('username');
-  };
+
   useEffect(() => {
     setIsAdmin(username === 'admin');
   }, [username]);
@@ -30,7 +27,7 @@ function Navbar({ username }) {
 
             </div>
             </li>
-            <li><button onClick={handleLogout} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>Cerrar Sesión</button></li>
+            <li onClick={onLogout}><Link to='/'>Cerrar sesión</Link></li>
         </ul>
       </div>
     </div>
