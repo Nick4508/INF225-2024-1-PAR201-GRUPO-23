@@ -27,11 +27,19 @@ function App() {
 		  setUsername(savedUsername);
 		}
 	  }, []);
+
 	const handleLogin = (username) => {
 		setLoggedIn(true); // Indicar que el usuario ha iniciado sesión
 		setUsername(username);
-		localStorage.setItem('loggedIn', 'true'); // Guardar el estado de inicio de sesión
-		localStorage.setItem('username', username); // Guardar el nombre de usuario
+		localStorage.setItem('loggedIn', 'true'); 
+		localStorage.setItem('username', username); 
+	};
+	const handleLogout = () => {
+		// Borra los datos de sesión del localStorage y actualiza los estados
+		localStorage.removeItem('loggedIn');
+		localStorage.removeItem('username');
+		setLoggedIn(false);
+		setUsername('');
 	  };
 
 	const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
@@ -90,7 +98,7 @@ function App() {
 	<div>
 		{loggedIn ? (
 		<div>
-			<Navbar username={username}/>
+			<Navbar username={username} onLogout = {handleLogout}/>
 			<div className="container">
 				<div className="row mt-4 d-flex justify-content-center align-items-center">
 					<div className="col-6">
@@ -126,7 +134,6 @@ function App() {
 		</div>
 	):(
 		<div>
-          <h1>Iniciar Sesión</h1>
           <LoginForm onLogin={handleLogin} />
 		</div>
 	)
