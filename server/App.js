@@ -7,6 +7,7 @@ const radiografiasRoutes = require("./Routes/radiografias")
 const scannersRoutes = require("./Routes/scanners")
 const ecografiasRoutes = require("./Routes/ecografias")
 const resonaciasRoutes = require("./Routes/resonancias")
+const users = require("./Routes/users")
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use('/radiografias', radiografiasRoutes);
 app.use('/scanners', scannersRoutes);
 app.use('/ecografias', ecografiasRoutes);
 app.use('/resonancias', resonaciasRoutes);
+app.use('/users', users);
 
 
 app.listen(app.get("port"), () =>{

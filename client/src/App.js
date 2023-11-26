@@ -6,15 +6,25 @@ import PrincipalRadiografias from './components/principalRadiografias';
 import PrincipalScanners from './components/principalScanners';
 import PrincipalEcografias from './components/principalEcografias';
 import PrincipalResonancias from './components/principalResonancias';
+import LoginForm from './components/LoginForm';
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
 import { registerLocale } from 'react-datepicker';
+// import { set } from '../../server/App';
 registerLocale("es", es);
 
 function App() {
+	const [loggedIn, setLoggedIn] = useState(false); 
+	const [username, setUsername] = useState('');
+	
+	const handleLogin = (username) => {
+		setLoggedIn(true); // Actualiza el estado para indicar que el usuario ha iniciado sesión
+		setUsername(username)
+	  };
+
 	const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
-	const [opcionSeleccionada, setOpcionSeleccionada] = useState('radiografias');
+	const [opcionSeleccionada, setOpcionSeleccionada] = useState('todos');
 	const handleOpcionChange = (opcion) => {
 		setOpcionSeleccionada(opcion);
 	  };
@@ -66,44 +76,51 @@ function App() {
 		}
 	}
 	return (
-
-		
 	<div>
-		<Navbar />
-		<div className="container">
-			<div className="row mt-4 d-flex justify-content-center align-items-center">
-				<div className="col-6">
-					<h5>Selecciona la fecha de los exámenes</h5>
-					<DatePicker
-						selected={fechaSeleccionada}
-						onChange={handleFechaChange}
-						locale="es"
-						dateFormat="dd-MM-yyyy"
-						
-        				timeFormat="HH:mm"
-					/>
+		{loggedIn ? (
+		<div>
+			<Navbar username={username}/>
+			<div className="container">
+				<div className="row mt-4 d-flex justify-content-center align-items-center">
+					<div className="col-6">
+						<h5>Selecciona la fecha de los exámenes</h5>
+						<DatePicker
+							selected={fechaSeleccionada}
+							onChange={handleFechaChange}
+							locale="es"
+							dateFormat="dd-MM-yyyy"
+							
+							timeFormat="HH:mm"
+						/>
+					</div>
+					<div className="col-6">
+						<h5>Selecciona el examen</h5>
+						<select
+							className="form-select"
+							onChange={(e) => handleOpcionChange(e.target.value)}
+							value={opcionSeleccionada}
+						>
+						<option value="radiografias">Radiografías</option>
+						<option value="scanners">Scanners</option>
+						<option value="ecografias">Ecografías</option>
+						<option value="resonancias">Resonancias</option>
+						<option value="todos">Todos los exámenes</option>
+						</select>
+					</div>
 				</div>
-				<div className="col-6">
-					<h5>Selecciona el examen</h5>
-					<select
-						className="form-select"
-						onChange={(e) => handleOpcionChange(e.target.value)}
-						value={opcionSeleccionada}
-					>
-					<option value="radiografias">Radiografías</option>
-					<option value="scanners">Scanners</option>
-					<option value="ecografias">Ecografías</option>
-					<option value="resonancias">Resonancias</option>
-					<option value="todos">Todos los exámenes</option>
-					</select>
+				<div class="row mt-4 d-flex flex-column justify-content-center align-items-center">
+					{renderPrincipalComponent()}
 				</div>
-			</div>
-			<div class="row mt-4 d-flex flex-column justify-content-center align-items-center">
-				{renderPrincipalComponent()}
 			</div>
 		</div>
+	):(
+		<div>
+          <h1>Iniciar Sesión</h1>
+          <LoginForm onLogin={handleLogin} />
+		</div>
+	)
+	}
 	</div>
-
 ); 
 }
 
