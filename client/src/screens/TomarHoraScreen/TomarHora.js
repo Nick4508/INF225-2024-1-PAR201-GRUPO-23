@@ -108,7 +108,7 @@ const TomarHora = () => {
                         type="text"
                         id="rut"
                         name="rut"
-                        pattern="[0-9]{7,10}" 
+                        pattern="^[0-9]{7,8}[kK]?$" 
                         title="Ingrese un RUT válido"
                         className="form-control"
                         required
