@@ -17,7 +17,7 @@ Puede acceder a la Wiki mediante el siguiente [enlace](https://github.com/Tabby2
 
 * [Video presentación avance 1](https://youtu.be/U0Rg02t8MhA?si=C18Q8Bhvn1SAbOZo)
 * [Video presentación avance 2 | Hito 4](https://www.youtube.com/watch?v=3xR_MnlSIsQ)
-* [Video presentación final | Entrega 6-7 ]()
+* [Video presentación final | Entrega 6-7 ](https://www.youtube.com/watch?v=b2K1xhRbLbc)
 
 ## Aspectos técnicos relevantes
 
