@@ -1,48 +1,118 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import DatePicker from "react-datepicker";
 
-const ModificarHora = () => {
-    return (
-        <div className="container">
-            <h2>Cita Médica de Paciente</h2>
-            <form action="" method="post">
-                <div className="mb-3">
-                    <label htmlFor="nombre" className="form-label">Nombre:</label>
-                    <input type="text" id="nombre" className="form-control" value="Nicolas Rodríguez" readOnly />
-                </div>
+import PrincipalRadiografias from './components/principalRadiografias';
+import PrincipalScanners from './components/principalScanners';
+import PrincipalEcografias from './components/principalEcografias';
+import PrincipalResonancias from './components/principalResonancias';
 
-                <div className="mb-3">
-                    <label htmlFor="rut" className="form-label">RUT:</label>
-                    <input type="text" id="rut" className="form-control" value="14.759.409-K" readOnly />
-                </div>
+import './App.css';
+import "react-datepicker/dist/react-datepicker.css";
+import es from "date-fns/locale/es";
+import { registerLocale } from 'react-datepicker';
+// import { set } from '../../server/App';
+registerLocale("es", es);
 
-                <div className="mb-3">
-                    <label htmlFor="correo" className="form-label">Correo Electrónico:</label>
-                    <input type="email" id="correo" className="form-control" value="usuario@gmail.com" readOnly />
-                </div>
+function App() {
 
-                <div className="mb-3">
-                    <label htmlFor="correo" className="form-label">Tipo de examen: </label>
-                    <input type="email" id="correo" className="form-control" value="Ecografía" readOnly />
-                </div>
+	const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
+	const [opcionSeleccionada, setOpcionSeleccionada] = useState('todos');
+	const handleOpcionChange = (opcion) => {
+		setOpcionSeleccionada(opcion);
+	  };
+	const handleFechaChange = (date) => {
+	// Obtener la fecha actual de fechaSeleccionada
+	const fechaActual = fechaSeleccionada || new Date();
+	
+	// Establecer la hora actual en la fecha actual
+	const nuevaHora = new Date().getHours() - 3;
+	const nuevoMinuto = new Date().getMinutes();
+	// Establecer la nueva hora en la fecha actual
+	fechaActual.setHours(nuevaHora);
+	fechaActual.setMinutes(nuevoMinuto); // Establecer los minutos deseados
+	
+	// Mantener la fecha seleccionada y ajustar solo la hora
+	const fechaAjustada = new Date(
+		date.getFullYear(),
+		date.getMonth(),
+		date.getDate(),
+		fechaActual.getHours(),
+		fechaActual.getMinutes()
+	);
+	
+	setFechaSeleccionada(fechaAjustada);
+	};
 
-                <div className="mb-3">
-                    <label htmlFor="fecha" className="form-label">Fecha de la Cita:</label>
-                    <input type="date" id="fecha" className="form-control" value="2023-10-28" readOnly />
-                </div>
+	const renderPrincipalComponent = () => {
+		switch (opcionSeleccionada) {
+			
+			case 'radiografias':
+				return <div><PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} /></div>
+			case 'scanners':
+				return <div><PrincipalScanners fechaSeleccionada={fechaSeleccionada} /></div>;
+			case 'ecografias':
+				return  <div><PrincipalEcografias fechaSeleccionada={fechaSeleccionada} /></div>;
+			case 'resonancias':
+				return  <div><PrincipalResonancias fechaSeleccionada={fechaSeleccionada} /></div>;
+			case 'todos':
+				return (
+					<div>
+						<PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} />
+						<PrincipalScanners fechaSeleccionada={fechaSeleccionada} />
+						<PrincipalEcografias fechaSeleccionada={fechaSeleccionada} />
+						<PrincipalResonancias fechaSeleccionada={fechaSeleccionada} />
+					</div>
+				);
+		  default:
+			return null
+		}
+	}
+	return (
+	<div>
+		{loggedIn ? (
+		<div>
+			<Navbar username={username} onLogout = {handleLogout}/>
+			<div className="container">
+				<div className="row mt-4 d-flex justify-content-center align-items-center">
+					<div className="col-6">
+						<h5>Selecciona la fecha de los exámenes</h5>
+						<DatePicker
+							selected={fechaSeleccionada}
+							onChange={handleFechaChange}
+							locale="es"
+							dateFormat="dd-MM-yyyy"
+							
+							timeFormat="HH:mm"
+						/>
+					</div>
+					<div className="col-6">
+						<h5>Selecciona el examen</h5>
+						<select
+							className="form-select"
+							onChange={(e) => handleOpcionChange(e.target.value)}
+							value={opcionSeleccionada}
+						>
+						<option value="radiografias">Radiografías</option>
+						<option value="scanners">Scanners</option>
+						<option value="ecografias">Ecografías</option>
+						<option value="resonancias">Resonancias</option>
+						<option value="todos">Todos los exámenes</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mt-4 d-flex flex-column justify-content-center align-items-center">
+					{renderPrincipalComponent()}
+				</div>
+			</div>
+		</div>
+	):(
+		<div>
+          <LoginForm onLogin={handleLogin} />
+		</div>
+	)
+	}
+	</div>
+); 
+}
 
-                <div className="mb-3">
-                    <label htmlFor="hora" className="form-label">Hora de la Cita:</label>
-                    <input type="time" id="hora" className="form-control" value="13:50" readOnly />
-                </div>
-                
-                <button type="submit" className="btn btn-success">Modificar Hora</button>
-            </form>
-
-            <br></br>
-            <Link to="/"><button type="submit" className='btn btn-success'>Volver</button></Link>
-        </div>
-    );
-};
-
-export default ModificarHora;
+export default App;
