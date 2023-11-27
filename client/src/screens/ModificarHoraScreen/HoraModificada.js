@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const TomarHora = () => {
+const HoraModificada = () => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const id = queryParams.get('id')
+    const tipoExamen = queryParams.get('examen')
+
     const [citaInfo, setCitaInfo] = useState({
         nombre: '',
         rut: '',
-        tipoExamen: '',
         fecha: '',
+        tipoExamen : tipoExamen,
         hora: '',
         random: ''
     });
-
+    
     const [horasDisponibles, setHorasDisponibles] = useState([]);
-    const [cantidadExamenes, setCantidadExamenes] = useState([]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setCitaInfo({ ...citaInfo, [name]: value });
+        
     };
   
     const handleSolicitarCita = (e) => {
@@ -81,8 +86,6 @@ const TomarHora = () => {
                 setHorasDisponibles(resultados);
             } catch (error) {
                 console.error('Error al obtener la cantidad', error);
-                const response = await fetch(`http://localhost:5000/${citaInfo.tipoExamen}/fecha/:${citaInfo.fecha}/random/ERROR`);
-                const data = await response.json();
               
                 
             }
@@ -94,7 +97,7 @@ const TomarHora = () => {
       
     return (
         <div className="container">
-            <h2>Solicitud de Cita Médica</h2>
+            <h2>Modificación de hora</h2>
             <form onSubmit={handleSolicitarCita}>
             <div className="mb-3">
                     <label htmlFor="nombre" className="form-label">Nombre:</label>
@@ -133,8 +136,9 @@ const TomarHora = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Tipo de Examen:</label>
-                    <div className='mb-3 d-flex'>
+                <label className="form-label">Tipo de Examen:</label>
+                <div className='mb-3 d-flex'>
+                    {tipoExamen === 'scanners' && (
                         <div className='me-3'>
                             <label>
                                 Scanner
@@ -147,6 +151,8 @@ const TomarHora = () => {
                                 />
                             </label>
                         </div>
+                    )}
+                    {tipoExamen === 'resonancias' && (
                         <div className='me-3'>
                             <label>
                                 Resonancia Magnética
@@ -159,6 +165,8 @@ const TomarHora = () => {
                                 />
                             </label>
                         </div>
+                    )}
+                    {tipoExamen === 'ecografias' && (
                         <div className='me-3'>
                             <label>
                                 Ecografía
@@ -171,6 +179,8 @@ const TomarHora = () => {
                                 />
                             </label>
                         </div>
+                    )}
+                    {tipoExamen === 'radiografias' && (
                         <div className='me-3'>
                             <label>
                                 Radiografía
@@ -183,8 +193,9 @@ const TomarHora = () => {
                                 />
                             </label>
                         </div>
-                    </div>
+                    )}
                 </div>
+            </div>
                 <div className="mb-3">
                     <label htmlFor="fecha" className="form-label">
                         Fecha de la Cita:
@@ -217,9 +228,9 @@ const TomarHora = () => {
                         ))}
                     </select>
                 </div>
-                <Link to={`/Conexion?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}&nombre=${citaInfo.nombre}&mail=${citaInfo.mail}&random=${citaInfo.hora}`}>
+                <Link to={`/NuevaHora?rut=${citaInfo.rut}&tipoExamen=${citaInfo.tipoExamen}&fecha=${citaInfo.fecha}&hora=${citaInfo.hora}&nombre=${citaInfo.nombre}&mail=${citaInfo.mail}&random=${citaInfo.hora}&id=${id}`}>
                     <button className="btn btn-primary">
-                        Solicitar Cita
+                        ModificarHora
                     </button>
                 </Link>
             </form>
@@ -233,4 +244,4 @@ const TomarHora = () => {
     );
 };
 
-export default TomarHora;
+export default HoraModificada;

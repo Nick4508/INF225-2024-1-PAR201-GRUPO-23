@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, ListGroup } from 'react-bootstrap';
-import formatRUT from './formatRUT';
+import formatRUT from '../../components/formatRUT';
+import { Link } from 'react-router-dom';
 
-function PrincipalEcografias({ fechaSeleccionada }) {
+function ModEcografia({ fechaSeleccionada }) {
+
+  // const history = useHistory()
   const [radiografias, setRadiografias] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -58,7 +61,9 @@ function PrincipalEcografias({ fechaSeleccionada }) {
                   <strong>Email:</strong> {radiografia.email}
                 </ListGroup.Item>
                 {/* boton */}
-                <input class="btn btn-primary" type="submit" value="Submit"></input>
+                 <Link to={`/HoraModificada/?id=${radiografia._id}&examen=ecografias`} className="btn btn-primary">
+                 Modificar
+               </Link>
                     
               </ListGroup>
             </Card.Body>
@@ -71,4 +76,4 @@ function PrincipalEcografias({ fechaSeleccionada }) {
   );
 }
 
-export default PrincipalEcografias;
+export default ModEcografia;

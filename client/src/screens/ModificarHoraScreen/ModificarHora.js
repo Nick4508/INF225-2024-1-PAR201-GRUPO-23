@@ -1,19 +1,22 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
 
-import PrincipalRadiografias from './components/principalRadiografias';
-import PrincipalScanners from './components/principalScanners';
-import PrincipalEcografias from './components/principalEcografias';
-import PrincipalResonancias from './components/principalResonancias';
+// import PrincipalRadiografias from './components/principalRadiografias';
+// import PrincipalScanners from './components/principalScanners';
+// import PrincipalEcografias from './components/principalEcografias';
+// import PrincipalResonancias from './components/principalResonancias';
 
-import './App.css';
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
 import { registerLocale } from 'react-datepicker';
+import ModEcografia from './ModEcografia';
+import ModRadiografia from './ModRadiografia';
+import ModResonancia from './ModResonancia';
+import ModScanner from './ModScanner';
 // import { set } from '../../server/App';
 registerLocale("es", es);
 
-function App() {
+function ModificarHora() {
 
 	const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
 	const [opcionSeleccionada, setOpcionSeleccionada] = useState('todos');
@@ -47,31 +50,21 @@ function App() {
 		switch (opcionSeleccionada) {
 			
 			case 'radiografias':
-				return <div><PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} /></div>
+				return <div><ModRadiografia fechaSeleccionada={fechaSeleccionada} /></div>
 			case 'scanners':
-				return <div><PrincipalScanners fechaSeleccionada={fechaSeleccionada} /></div>;
+				return <div><ModScanner fechaSeleccionada={fechaSeleccionada} /></div>;
 			case 'ecografias':
-				return  <div><PrincipalEcografias fechaSeleccionada={fechaSeleccionada} /></div>;
+				return  <div><ModEcografia fechaSeleccionada={fechaSeleccionada} /></div>;
 			case 'resonancias':
-				return  <div><PrincipalResonancias fechaSeleccionada={fechaSeleccionada} /></div>;
-			case 'todos':
-				return (
-					<div>
-						<PrincipalRadiografias fechaSeleccionada={fechaSeleccionada} />
-						<PrincipalScanners fechaSeleccionada={fechaSeleccionada} />
-						<PrincipalEcografias fechaSeleccionada={fechaSeleccionada} />
-						<PrincipalResonancias fechaSeleccionada={fechaSeleccionada} />
-					</div>
-				);
+				return  <div><ModResonancia fechaSeleccionada={fechaSeleccionada} /></div>;
+			
 		  default:
 			return null
 		}
 	}
 	return (
 	<div>
-		{loggedIn ? (
 		<div>
-			<Navbar username={username} onLogout = {handleLogout}/>
 			<div className="container">
 				<div className="row mt-4 d-flex justify-content-center align-items-center">
 					<div className="col-6">
@@ -96,7 +89,6 @@ function App() {
 						<option value="scanners">Scanners</option>
 						<option value="ecografias">Ecografías</option>
 						<option value="resonancias">Resonancias</option>
-						<option value="todos">Todos los exámenes</option>
 						</select>
 					</div>
 				</div>
@@ -105,14 +97,9 @@ function App() {
 				</div>
 			</div>
 		</div>
-	):(
-		<div>
-          <LoginForm onLogin={handleLogin} />
-		</div>
-	)
-	}
+	
 	</div>
 ); 
 }
 
-export default App;
+export default ModificarHora;

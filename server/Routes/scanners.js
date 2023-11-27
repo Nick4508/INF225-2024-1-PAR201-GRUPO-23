@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Radiografia = require('../Models/scanner');
+const mongoose = require('mongoose');
 
 
 //create
@@ -76,6 +77,33 @@ router.delete('/rut/:rut', async (req, res) => {
       res.status(500).send('Error interno del servidor');
     }
   });
+
+  router.delete('/id/:id', async (req, res) => {
+    try {
+      const cast_id = new mongoose.Types.ObjectId(req.params.id);
+      
+      const radiografiaEliminada = await Radiografia.deleteOne({ _id: cast_id });
+      if (!radiografiaEliminada) {
+        return res.status(404).json({ mensaje: 'Scanner no encontrada por Rut' });
+      }
+      res.json({ mensaje: 'Scanner eliminada correctamente por Rut' });
+    } catch (error) {
+      console.error('Error al eliminar una radiografía por Rut:', error);
+      res.status(500).send('Error interno del servidor');
+    }
+  });
+  
+  router.get('/id/:id', async (req, res) => {
+    try {
+      const cast_id = new mongoose.Types.ObjectId(req.params.id);
+        const radiografiasPorRut = await Radiografia.findById({_id: cast_id });
+        res.json(radiografiasPorRut);
+    } catch (error) {
+        console.error('Error al obtener radiografías por Rut:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+    });
+      
   //update
 router.put('/rut/:rut', async (req, res) => {
 try {

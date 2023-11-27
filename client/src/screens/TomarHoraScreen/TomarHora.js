@@ -12,7 +12,7 @@ const TomarHora = () => {
     });
 
     const [horasDisponibles, setHorasDisponibles] = useState([]);
-    const [cantidadExamenes, setCantidadExamenes] = useState([]);
+    // const [cantidadExamenes, setCantidadExamenes] = useState([]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -81,8 +81,8 @@ const TomarHora = () => {
                 setHorasDisponibles(resultados);
             } catch (error) {
                 console.error('Error al obtener la cantidad', error);
-                const response = await fetch(`http://localhost:5000/${citaInfo.tipoExamen}/fecha/:${citaInfo.fecha}/random/ERROR`);
-                const data = await response.json();
+                // const response = await fetch(`http://localhost:5000/${citaInfo.tipoExamen}/fecha/:${citaInfo.fecha}/random/ERROR`);
+                // const data = await response.json();
               
                 
             }

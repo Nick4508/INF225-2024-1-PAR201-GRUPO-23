@@ -9,6 +9,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import TomarHora from './screens/TomarHoraScreen/TomarHora';
 import Conexion from './components/Conexion';
 import ModificarHora from './screens/ModificarHoraScreen/ModificarHora'
+import HoraModificada from './screens/ModificarHoraScreen/HoraModificada'
+import NuevaHora from './screens/ModificarHoraScreen/NuevaHora';
+
 
 const router = createBrowserRouter([
   {
@@ -28,9 +31,15 @@ const router = createBrowserRouter([
     element: <Conexion/> 
   },
   {
-    path: "Horario",
-    element: <></> 
+    path: "HoraModificada",
+    element: <HoraModificada/> 
+
+  },
+  {
+    path: "NuevaHora",
+    element: <NuevaHora/>
   }
+
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
