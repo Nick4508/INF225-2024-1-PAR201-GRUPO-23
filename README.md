@@ -4,7 +4,7 @@ Este es el repositorio del *Grupo 23*, cuyos integrantes son:
 * Nicolás Rodríguez - Rol 202173515-1
 * Matías Barrera    - Rol 202173539-9
 * Ignacio Trujillo  - Rol 202173603-4
-* Diego Cisternas   - Rol 202173xxx-x
+* Diego Cisternas   - Rol 202173521-6
 * **Tutor**: Nilsson Acevedo
 
 
