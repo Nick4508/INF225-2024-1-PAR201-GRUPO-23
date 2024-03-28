@@ -1,3 +1,15 @@
+# INF225-2024-1-PAR201-GRUPO-23 
+Este es el repositorio del *Grupo 23*, cuyos integrantes son:
+
+* Nicolás Rodríguez - Rol 202173515-1
+* Matías Barrera    - Rol 202173539-9
+* Ignacio Trujillo  - Rol 202173603-4
+* Diego Cisternas   - Rol 202173xxx-x
+* **Tutor**: Nilsson Acevedo
+
+
+
+# OLD README
 # INF236-2023-2-PAR201-GRUPO-05
 
 # Grupo 5
