@@ -7,7 +7,7 @@ Este es el repositorio del *Grupo 23*, cuyos integrantes son:
 * Diego Cisternas   - Rol 202173521-6
 * **Tutor**: Nilsson Acevedo
 
-https://github.com/Tabby2109/INF236-2023-2-PAR201-GRUPO-05.wiki.git
+
 
 # OLD README
 # INF236-2023-2-PAR201-GRUPO-05
