@@ -12,6 +12,7 @@ Se continuara con el trabajo realizado el semestre 2023-2, cuyo profesor era Ale
 
 ## Enlaces Útiles
 * [Wiki](https://github.com/Nick4508/INF225-2024-1-PAR201-GRUPO-23/wiki)
+* [Old Wiki](https://github.com/Tabby2109/INF236-2023-2-PAR201-GRUPO-05/wiki)
 
 # OLD README
 # INF236-2023-2-PAR201-GRUPO-05
