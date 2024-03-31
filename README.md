@@ -1,5 +1,5 @@
 # INF225-2024-1-PAR201-GRUPO-23 
-* Se continuara con el trabajo realizado el semestre 2023-2, cuyo profesor era Alexis Henriquez.
+Se continuara con el trabajo realizado el semestre 2023-2, cuyo profesor era Alexis Henriquez.
 Este es el repositorio del *Grupo 23*, cuyos integrantes son:
 
 * Nicolás Rodríguez - Rol 202173515-1
