@@ -8,7 +8,7 @@ Este es el repositorio del *Grupo 23*, cuyos integrantes son:
 * Diego Cisternas   - Rol 202173521-6
 * **Tutor**: Nilsson Acevedo
 
-Se continuara con el trabajo realizado el semestre 2023-2, cuyo profesor era Alexis Henriquez.
+Se continuará con el trabajo realizado el semestre 2023-2, cuyo profesor era Alexis Henriquez.
 
 ## Enlaces Útiles
 * [Wiki proyecto actual](https://github.com/Nick4508/INF225-2024-1-PAR201-GRUPO-23/wiki)
