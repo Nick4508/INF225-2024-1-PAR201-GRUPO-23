@@ -9,6 +9,11 @@ Este es el repositorio del *Grupo 23*, cuyos integrantes son:
 * **Tutor**: Nilsson Acevedo
 
 Se continuará con el trabajo realizado el semestre 2023-2, cuyo profesor era Alexis Henriquez.
+## Descripción del problema
+En el área de imagenología de un hospital en Santiago, se registran manualmente los horarios para la toma de exámenes en cuadernos que representan los meses del año. Esto llevó a errores administrativos, como la modificación de horarios y dificultad para mantener la integridad de la información. Además se tienen tanto errores de datos como ilegibilidad en la escritura lo que produce complejidad a la hora de atender a los pacientes.
+
+## Herramientas utilizadas
+El proyecto se desarrolló utilizando el stack MERN (MongoDB, Express, React y Node.js).
 
 ## Enlaces Útiles
 * [Wiki proyecto actual](https://github.com/Nick4508/INF225-2024-1-PAR201-GRUPO-23/wiki)
