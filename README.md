@@ -18,6 +18,7 @@ El proyecto se desarrolló utilizando el stack MERN (MongoDB, Express, React y N
 ## Enlaces Útiles
 * [Wiki proyecto actual](https://github.com/Nick4508/INF225-2024-1-PAR201-GRUPO-23/wiki)
 * [Wiki proyecto pasado](https://github.com/Tabby2109/INF236-2023-2-PAR201-GRUPO-05/wiki)
+* [Video de Prueba del sistema](https://www.youtube.com/watch?v=b2K1xhRbLbc)
 
 # OLD README
 # INF236-2023-2-PAR201-GRUPO-05
