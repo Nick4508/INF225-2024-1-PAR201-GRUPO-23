@@ -7,23 +7,42 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    // Buscar al usuario por su nombre de usuario
-    const usuario = await User.findOne({ username });
-
-    if (!usuario) {
-      return res.status(404).json({ message: 'Nombre de usuario incorrecto' });
-    }
-
-    // Verificar la contraseña
-    if (password === usuario.password) {
-      // Si las credenciales son correctas, enviar el nombre de usuario
-      res.status(200).json({ message: 'Inicio de sesión exitoso', username: usuario.username });
+    const usuario = await users.findOne({ username, password });
+    if (usuario) {
+      console.log("Usuario verificado correctamente");
     } else {
-      res.status(401).json({ message: 'Contraseña incorrecta' });
+      console.log("Nombre de usuario o contraseña incorrectos");
     }
   } catch (error) {
-    console.error('Error en la autenticación:', error);
-    res.status(500).json({ error: 'Error en la autenticación' });
+    console.error("Error al verificar el usuario", error);
+  }
+});
+
+// Ruta para crear usuario
+router.post('/register', async (req, res) => {
+  const { username, password, role } = req.body;
+
+  try {
+    // Verificar si el usuario ya existe
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ message: "El nombre de usuario ya existe" });
+    }
+
+    // Crear un nuevo usuario
+    const newUser = new User({
+      username,
+      password,
+      role
+    });
+
+    // Guardar el nuevo usuario en la base de datos
+    const savedUser = await newUser.save();
+
+    res.status(201).json({ message: "Usuario registrado exitosamente", user: savedUser });
+  } catch (error) {
+    console.error("Error al registrar el usuario", error);
+    res.status(500).json({ message: "Error interno del servidor" });
   }
 });
 
@@ -41,3 +60,4 @@ router.get('/logout', (req, res) => {
 });
 
 module.exports = router;
+
