@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1>Perfil de {{ user.username }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{user.email}}
+    </br>
+        <button ><a href="{% url 'editar' %}"> Editar Perfil</a></button>
+        <button><a href="{% url 'index' %}">Inicio</a></button>
+    </form>
+
+{% endblock %}
