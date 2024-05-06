@@ -9,10 +9,13 @@
 				<ul>
 					{% for reserva in reservas_usuario %}
 						<li>
-							<strong>Fecha de reserva:</strong> {{ reserva.fecha_reserva }}<br>
-							<strong>Bloque de horas:</strong> {{ reserva.bloque_horas }}<br>
-							<strong>Posible diagnóstico:</strong> {{ reserva.posible_diagnostico|default:"No especificado" }}<br>
-							<strong>Médico que deriva:</strong> {{ reserva.medico_deriva }}
+							<strong>Tipo de examen: </strong>{{reserva.tipo_de_examen}}<br>
+							<strong>Fecha de reserva: </strong> {{ reserva.fecha_reserva }}<br>
+							<strong>Bloque de horas: </strong> {{ reserva.bloque_horas }}<br>
+							<strong>Posible diagnóstico: </strong> {{ reserva.posible_diagnostico|default:"No especificado" }}<br>
+							<strong>Médico que deriva: </strong> {{ reserva.medico_deriva }} <br>
+							<button><a href="{% url 'editar_reserva' reserva.tipo_de_examen reserva.id %}">Editar</a></button>
+							<button><a href="{% url 'eliminar_reserva' reserva.tipo_de_examen reserva.id %}">eliminar</a></button>
 						</li>
 					{% endfor %}
 				</ul>

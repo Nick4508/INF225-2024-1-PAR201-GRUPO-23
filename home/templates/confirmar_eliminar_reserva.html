@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Eliminación de Reserva</title>
+</head>
+<body>
+    <h1>Confirmar Eliminación de Reserva</h1>
+    <p>¿Estás seguro de que deseas eliminar la reserva del tipo {{ reserva.tipo_de_examen }} para el usuario {{ reserva.usuario }}?</p>
+    <form action="{% url 'eliminar_reserva' reserva.tipo_de_examen reserva.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Eliminación</button>
+    </form>
+    <a href="{% url 'index' %}">Cancelar</a>
+</body>
+</html>

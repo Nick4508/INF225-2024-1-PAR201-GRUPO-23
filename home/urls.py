@@ -16,4 +16,11 @@ urlpatterns = [
     path('edit-profile/',local_views.edit_profile, name='editar'),
 	path('Register/', RegisterPage.as_view(success_url='../') ),
 	path('reservas/', local_views.reservas, name='reservas'),
+    path('rayosX_reservar/',local_views.reservas_rayosX, name='reservas_rayos_x' ),
+    path('resonancia_reservar/',local_views.reservas_resonancias, name='reservas_resonancias' ),
+    path('tomografias_reservar/',local_views.reservas_tomografias, name='reservas_tomografias' ),
+	path('ecografias_reservar/',local_views.reservas_ecografias, name='reservas_ecografias' ),
+
+	path('editar_reserva/<str:tipo>/<int:id>/', local_views.editar_reservas, name='editar_reserva'),
+    path('eliminar_reserva/<str:tipo>/<int:id>/', local_views.eliminar_reserva, name='eliminar_reserva'),
 ]
