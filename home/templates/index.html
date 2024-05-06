@@ -1,10 +1,35 @@
 {% extends 'layout.html' %}
 {% block content %}
+	{% if user.is_authenticated %}
 
 	<main class="main">
 		<div class="container">
-			
+			{% if reservas_usuario %}
+				<strong>Mis reservas</strong>
+				<ul>
+					{% for reserva in reservas_usuario %}
+						<li>
+							<strong>Fecha de reserva:</strong> {{ reserva.fecha_reserva }}<br>
+							<strong>Bloque de horas:</strong> {{ reserva.bloque_horas }}<br>
+							<strong>Posible diagnóstico:</strong> {{ reserva.posible_diagnostico|default:"No especificado" }}<br>
+							<strong>Médico que deriva:</strong> {{ reserva.medico_deriva }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p>No tienes ninguna reserva.</p>
+			{% endif %}
+
+			<button><a href="{% url 'reservas'%}">Reservar</a></button>
 		</div>
 	</main>
+	{% else %}
+	
+	<main class="main">
+		<div class="container">
+			<!-- <button><a href="{% url 'reservas'%}">Reservar</a></button> -->
+		</div>
+	</main>
+	{% endif %}
 
 {% endblock %}

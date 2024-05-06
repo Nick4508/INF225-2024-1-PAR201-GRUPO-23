@@ -12,7 +12,8 @@ urlpatterns = [
 	path('Login/', get_name.as_view(), name='login'),
 	path('Logout/', LogoutView.as_view(next_page='index'), name='logout'),
 	path('', local_views.home, name='index'),
-	path('User-account/', local_views.profile),
+	path('User-account/', local_views.profile, name='profile'),
+    path('edit-profile/',local_views.edit_profile, name='editar'),
 	path('Register/', RegisterPage.as_view(success_url='../') ),
-
+	path('reservas/', local_views.reservas, name='reservas'),
 ]
