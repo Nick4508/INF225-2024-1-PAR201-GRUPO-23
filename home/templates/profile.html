@@ -1,11 +1,18 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+    
     <h1>Perfil de {{ user.username }}</h1>
+    <p>Nombre de usuario: {{ user.username }}</p>
+    <p>Correo electrónico: {{ user.email }}</p>
+    <p>RUT: {{ user.profile.rut }}</p>
+    <p>Fecha de nacimiento: {{ user.profile.fecha_de_nacimiento }}</p>
+    <p>Alergias: {{ user.profile.alergias }}</p>
+    <p>Tramo Fonasa: {{ user.profile.tramo_fonasa }}</p>
+    <p>Dirección: {{ user.profile.direccion }}</p>
+    <p>Teléfono: {{ user.profile.telefono }}</p>
     <form method="post">
         {% csrf_token %}
-        {{user.email}}
     </br>
         <button ><a href="{% url 'editar' %}"> Editar Perfil</a></button>
         <button><a href="{% url 'index' %}">Inicio</a></button>

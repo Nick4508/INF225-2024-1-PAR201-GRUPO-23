@@ -16,12 +16,16 @@ BLOQUES_RESONANCIAS_CHOICES =[
 
 ]
 
-
+class userForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username','email']
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['fecha_de_nacimiento','rut','alergias','tramo_fonasa','direccion','telefono'] # agregar lo demás al actualizar el modelo
+        # fields = ['username','email']
 
 class ReservaForm(forms.Form):
     CHOICES = (

@@ -11,10 +11,29 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from datetime import datetime
+from django.contrib.auth.forms import UserChangeForm
 
 #from .forms import ProductForm
 # Utilities
-from datetime import datetime
+
+def edit_profile(request):
+    user = request.user
+    profile = user.profile
+    if request.method == 'POST':
+        user_form = userForm(request.POST, instance=user)
+        profile_form = ProfileForm(request.POST, instance=profile)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile')  # Redirigir a la página de perfil después de editar
+    else:
+        user_form = userForm(instance=user)
+        profile_form = ProfileForm(instance=profile)
+    # print(user_form)
+    # print(profile_form)
+    return render(request, 'edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
 @login_required
 def home(request):
@@ -30,9 +49,10 @@ def home(request):
     return render(request, 'index.html', {'reservas_usuario': todas_las_reservas})
 
 def profile(request):
-	posts = User.objects.all()
-	context = { 'posts': posts}
-	return render(request, 'profile.html', context)
+    # Obtener todos los perfiles
+    profiles = Profile.objects.all()
+    context = {'profiles': profiles}
+    return render(request, 'profile.html', context)
 
 
 
@@ -56,18 +76,18 @@ class RegisterPage(FormView):
 			login(self.request, user)
 		return super(RegisterPage, self).form_valid(form)
 	
-def edit_profile(request):
-    perfil_usuario_actual = request.user
-    # print(request.method)
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=perfil_usuario_actual)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')  # Redirigir a la página de perfil después de editar
-    else:
-        form = ProfileForm(instance=perfil_usuario_actual)
+# def edit_profile(request):
+#     perfil_usuario_actual = request.user
+#     # print(request.method)
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, instance=perfil_usuario_actual)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('profile')  # Redirigir a la página de perfil después de editar
+#     else:
+#         form = ProfileForm(instance=perfil_usuario_actual)
     
-    return render(request, 'edit_profile.html', {'form': form})
+#     return render(request, 'edit_profile.html', {'form': form})
 
 def reservas(request):
     if request.method == 'POST':
