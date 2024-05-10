@@ -14,8 +14,8 @@ En el área de imagenología de un hospital en Santiago, se registran manualment
 
 ## Herramientas utilizadas
 El proyecto se desarrollará utilizando Django con las siguientes versiones.
-* Django version 3.2.6
-* Python version 3.11.4
+* Django versión 3.2.6
+* Python versión 3.11.4
 ## Enlaces Útiles
 * [Wiki proyecto actual](https://github.com/Nick4508/INF225-2024-1-PAR201-GRUPO-23/wiki)
 * [Wiki proyecto pasado](https://github.com/Tabby2109/INF236-2023-2-PAR201-GRUPO-05/wiki)
