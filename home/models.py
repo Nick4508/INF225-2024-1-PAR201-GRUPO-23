@@ -47,8 +47,9 @@ class rayos_X(models.Model):
     TIPO_EXAMEN_CHOICES = [
         (RAYOS_X, 'Rayos X'),
     ]
+    date = timezone.now()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    fecha_reserva = models.DateField(default=timezone.now())
+    fecha_reserva = models.DateField(default=date)
     bloque_horas = models.TimeField(default=time(8,0))  # Define BLOQUE_HORAS_CHOICES según tus necesidades
     posible_diagnostico = models.TextField(blank=True)
     medico_deriva = models.CharField(max_length=100)

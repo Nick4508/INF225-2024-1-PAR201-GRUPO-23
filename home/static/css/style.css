@@ -73,7 +73,9 @@ body {
     /* Cambia el color al pasar el ratón */
 }
 
-
+.profile_user{
+    text-align: center;
+}
 .logo {
     font-size: 24px;
     /* Tamaño de fuente grande para el logo */
@@ -90,6 +92,7 @@ body {
 
 .divider {
     margin: 20px 0;
+    text-align: center;
     /* Espacio entre el header y el contenido principal */
 }
 

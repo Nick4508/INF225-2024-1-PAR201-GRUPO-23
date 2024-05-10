@@ -13,10 +13,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from datetime import datetime
 from django.contrib.auth.forms import UserChangeForm
+from django.http import JsonResponse
+from django.contrib.auth import get_user_model
+
 
 #from .forms import ProductForm
 # Utilities
-
 def edit_profile(request):
     user = request.user
     profile = user.profile
@@ -53,6 +55,7 @@ def profile(request):
     profiles = Profile.objects.all()
     context = {'profiles': profiles}
     return render(request, 'profile.html', context)
+
 
 
 
@@ -246,3 +249,19 @@ def eliminar_reserva(request, tipo, id):
     else:
         # Si la solicitud no es POST, podría ser útil mostrar una página de confirmación de eliminación
         return render(request, 'confirmar_eliminar_reserva.html', {'reserva': reserva})
+
+
+def obtener_usuarios(request):
+    if request.method == 'GET':
+        User = get_user_model()
+        users = User.objects.all().values('username', 'email')
+        return JsonResponse(list(users), safe=False)
+    else:
+        return JsonResponse({'err': 'Bad Request'}, status=405)
+    
+def obtener_rayos_x(request):
+    if request.method == 'GET':
+        data = rayos_X.objects.all().values('posible_diagnostico','medico_deriva')
+        return JsonResponse(list(data),safe=False)
+    else:
+        return JsonResponse({'err': 'Bad Request'}, status=405)

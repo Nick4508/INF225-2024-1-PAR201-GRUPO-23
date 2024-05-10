@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    
+
+    <div style="text-align: center;">
     <h1>Perfil de {{ user.username }}</h1>
     <p>Nombre de usuario: {{ user.username }}</p>
     <p>Correo electrónico: {{ user.email }}</p>
@@ -11,6 +12,8 @@
     <p>Tramo Fonasa: {{ user.profile.tramo_fonasa }}</p>
     <p>Dirección: {{ user.profile.direccion }}</p>
     <p>Teléfono: {{ user.profile.telefono }}</p>
+
+    </div>
     <form method="post">
         {% csrf_token %}
     </br>
@@ -18,4 +21,5 @@
         <button><a href="{% url 'index' %}">Inicio</a></button>
     </form>
 
-{% endblock %}
+    {% endblock %}
+    
