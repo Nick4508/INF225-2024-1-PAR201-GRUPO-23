@@ -6,7 +6,7 @@ Este es el repositorio del *Grupo 23*, cuyos integrantes son:
 * Matías Barrera    - Rol 202173539-9
 * Ignacio Trujillo  - Rol 202173603-4
 * Diego Cisternas   - Rol 202173521-6
-* **Tutor**: Nilsson Acevedo
+* **Tutor**: Rodrigo Contreras
 
 Se continuará con el trabajo realizado el semestre 2023-2, cuyo profesor era Alexis Henriquez.
 ## Descripción del problema
