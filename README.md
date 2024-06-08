@@ -22,7 +22,7 @@ Por lo que el proyecto se desarrollará utilizando las siguientes versiones.
 * [Wiki proyecto actual](https://github.com/Nick4508/INF225-2024-1-PAR201-GRUPO-23/wiki)
 * [Wiki proyecto pasado](https://github.com/Tabby2109/INF236-2023-2-PAR201-GRUPO-05/wiki)
 * [Video de Prueba del sistema](https://www.youtube.com/watch?v=b2K1xhRbLbc)
-* [Video entrega 4](https://youtu.be/GL4rX-JmnqE)
+* [Video Hito 4](https://youtu.be/GL4rX-JmnqE)
 
 # OLD README
 # INF236-2023-2-PAR201-GRUPO-05
