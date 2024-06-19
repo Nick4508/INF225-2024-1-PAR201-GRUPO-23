@@ -3,6 +3,9 @@ from .models import Profile,User,rayos_X,ecografias,tomografias,resonancias
 from django import forms
 from datetime import time
 
+LABEL_HORARIO = 'Fecha de reserva'
+LABEL_BLOQUE = 'Bloque de horas'
+
 BLOQUES_RAYOSX_CHOICES = [
     (time(8,30),'08:30'),
     (time(9,0),'09:00'),
@@ -12,6 +15,7 @@ BLOQUES_RAYOSX_CHOICES = [
     (time(11,00),'11:00'),
     (time(11,30),'11:30'),
 ]
+
 BLOQUES_RESONANCIAS_CHOICES =[
 
 ]
@@ -37,32 +41,32 @@ class ReservaForm(forms.Form):
     tipo_examen = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
 
 class rayos_x_ReservaForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
 
     class Meta:
         model = rayos_X
         exclude = ['usuario', 'cantidad']
 
 class tomografias_ReservaForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
 
     class Meta:
         model = tomografias
         exclude = ['usuario', 'cantidad']
 
 class ecografias_ReservaForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
 
     class Meta:
         model = ecografias
         exclude = ['usuario', 'cantidad']
 
 class resonancia_ReservaForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
 
     class Meta:
         model = resonancias
@@ -71,29 +75,29 @@ class resonancia_ReservaForm(forms.ModelForm):
 
 
 class rayos_x_EditForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
     class Meta:
         model = rayos_X
         exclude = ['usuario','cantidad']
 
 class ecografias_EditForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
     class Meta:
         model = ecografias
         exclude = ['usuario','cantidad']
 
 class tomografias_EditForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
     class Meta:
         model = tomografias
         exclude = ['usuario','cantidad']
 
 class resonancia_EditForm(forms.ModelForm):
-    fecha_reserva = forms.DateField(label='Fecha de reserva', widget=forms.DateInput(attrs={'type': 'date'}))
-    bloque_horas = forms.ChoiceField(label='Bloque de horas', choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
+    fecha_reserva = forms.DateField(label=LABEL_HORARIO, widget=forms.DateInput(attrs={'type': 'date'}))
+    bloque_horas = forms.ChoiceField(label=LABEL_BLOQUE, choices=BLOQUES_RAYOSX_CHOICES)  # Define BLOQUES_HORAS_CHOICES según tus necesidades
     class Meta:
         model = resonancias
         exclude = ['usuario','cantidad']

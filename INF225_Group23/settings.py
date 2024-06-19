@@ -1,9 +1,22 @@
 from pathlib import Path
+import os 
+
+env_path = Path('.') / '.env'
+
+
+def load_env():
+    env_path = '.env'
+    if os.path.exists(env_path):
+        with open(env_path) as f:
+            for line in f:
+                if line.strip() and not line.startswith('#'):
+                    key, value = line.strip().split('=', 1)
+                    os.environ[key] = value
+
+load_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-SECRET_KEY = 'django-insecure-*8i4pm-0!b24nxb)odx$n-s5i)mwe9$klm($ewe%z#qo+=-@co'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 

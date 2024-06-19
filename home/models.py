@@ -6,22 +6,6 @@ from django.utils import timezone
 from datetime import time
 
 
-BLOQUES_RAYOSX_CHOICES = [
-    (time(8,30),'08:30'),
-    (time(9,0),'09:00'),
-    (time(9,30),'09:30'),
-]
-
-
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
-
 # Create models
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
